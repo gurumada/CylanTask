@@ -23,10 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')asrdrwj=lu&6prv524403)%_dlc#+!#=6ih0hy_7uuau0k)6*'
 
+if os.environ.get('debag', False):
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -71,22 +74,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cylan_task_python3.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CylanTask',
-        'USER': 'name',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+DATABASE['default'] = dj_database_url.config()
 
-    }
-}
-
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -130,6 +122,3 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = '/'
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
