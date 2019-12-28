@@ -29,8 +29,12 @@ ALLOWED_HOSTS = []
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-DATABASE = {
+DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'microblog',
+        'USER': 'microblog',
+        'PASSWORD': 'microblog',
     }
 }
 
