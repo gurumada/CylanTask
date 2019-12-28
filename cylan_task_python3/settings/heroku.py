@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,20 +20,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-DATABASE = {
-    'default': {
-    }
-}
+DATABASES['default'] = dj_database_url.config()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWAREDED_PROTO', 'https')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')asrdrwj=lu&6prv524403)%_dlc#+!#=6ih0hy_7uuau0k)6*'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUB = False
+if os.environ.get('debug', False):
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+else:
+    DEBUG = False
 
 # Application definition
 
