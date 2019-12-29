@@ -24,7 +24,8 @@ ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-DATABASES['default'] = dj_database_url.config()
+#DATABASES['default'] = dj_database_url.config()
+DATABASES = { 'default': dj_database_url.config() }
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWAREDED_PROTO', 'https')
 
