@@ -27,7 +27,7 @@ ALLOWED_HOSTS = ['*']
 #DATABASES['default'] = dj_database_url.config()
 DATABASES = { 'default': dj_database_url.config() }
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWAREDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWAREDED_PROTO', 'https')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')asrdrwj=lu&6prv524403)%_dlc#+!#=6ih0hy_7uuau0k)6*'
